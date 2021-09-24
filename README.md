@@ -72,10 +72,12 @@ movies %>%
 ```
 ## Ideas:
 In the column "status" filter by released only 
-Status column look for correlation between released and months 
+Status column look for correlation between released and months -stick with one variable ( revenue)
 Min, max, mean, standard deviation, of revenue 
 language and country 
 popularity(?)
+
+how does it fit in the overall idea(research question)
 
 ```
 ```
