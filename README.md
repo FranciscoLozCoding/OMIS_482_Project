@@ -44,7 +44,7 @@ movies <-select(movies_project_,2,3,7:8,10:14,16:17,18,20,21)
 
 bad_data <-select(movies_project_,1,4,5,6,9,13,15,19)
 
-Used_Data <- Used_Data %>% separate(director,into = c("director_first_name","director_last_name"))
+movies <- movies %>% separate(director,into = c("director_first_name","director_last_name"))
 
 select(movies, "director")
 
@@ -53,6 +53,8 @@ select(movies, "vote_average")
 rm(usable_data)
 print(movies)
 view(movies)
+
+movies <- movies %>% separate(release_date, into = c("month", "day", "year"), sep = "/", convert= "TRUE")
 
 movies %>% 
   filter(release_date >= "1980-01-01" & release_date <= "2017-12-31") 
