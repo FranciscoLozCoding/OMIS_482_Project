@@ -40,7 +40,7 @@ print(movies_project_)
 Before we can manipulate the dataset and start to analyze the data, we need to tidy it up! We noticed that the columns "keywords", "index", "overview", "homepage", "ID", "Tagline","runtime" and Cast." We have decided to omit these columns because they add no value to our goal of trying to figure out what impacts a movie's success. These categories are mostly character/text values that do not allow us to measure descriptive statistics. In order to find the answers to our questions we plan to use mostly integer values. We want to make sure we abide by "rule of 3" ensuring each variable has its own column, row, cell. Because our data set is not in the tidyverse package, we had to assign our data frame to the name "movies." Because our dataset goes all the way back to 1930 and even predicts films to 2029, we found that using our data set from 1980 to 2017 would give us a more accurate look at how film has evolved.
 ```{r}
 
-movies <-select(movies_project_,2,3,7:8,10:14,16:17,18,20,21)
+movies <-select(movies_project_,2,3,7:8,10:14,16:18,20:21)
 
 bad_data <-select(movies_project_,1,4,5,6,9,13,15,19)
 
