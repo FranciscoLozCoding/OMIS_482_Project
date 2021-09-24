@@ -52,6 +52,7 @@ Is there a correlation between
 What is the most popular genre? 
 Is there a correlation between popularity and release date
 Is there a correlation between how successful a movie is and their production company? 
+Is there a correlation between movie ratings and the revenue amount?
 ```{r}
 movies_project_ %>% 
   group_by(revenue) %>% 
