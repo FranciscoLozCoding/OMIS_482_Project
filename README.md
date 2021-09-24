@@ -44,6 +44,7 @@ movies <-select(movies_project_,2,3,7:8,10:14,16:17,18,20,21)
 
 bad_data <-select(movies_project_,1,4,5,6,9,13,15,19)
 
+Used_Data <- Used_Data %>% separate(director,into = c("director_first_name","director_last_name"))
 
 select(movies, "director")
 
