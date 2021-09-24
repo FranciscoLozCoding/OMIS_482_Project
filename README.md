@@ -1,9 +1,8 @@
 # OMIS_482_Project
 Group A repository for OMIS 482 R Studio project 
 ---
----
 title: "the_movie_reviewers"
-author: "Gary Dhami,Francisco Lozano,Amelasky Mendez,Tyler Williams,Rachel Worden"
+author: "Gary Dhami, Francisco Lozano, Amelasky Mendez, Tyler Williams, Rachel Worden"
 date: "`r format(Sys.time(), '%d %B, %Y')`" 
 output: 
   html_document:
@@ -69,7 +68,7 @@ movies %>%
 ```{r}
 
 ```
-##Ideas:
+## Ideas:
 In the column "status" filter by released only 
 Status column look for correlation between released and months 
 Min, max, mean, standard deviation, of revenue 
@@ -78,7 +77,7 @@ popularity(?)
 
 ```
 ```
-##Questions we have
+## Questions we have
 
 Is there a correlation between budget and the amount of revenue a movie makes? 
 Is there a correlation between 
@@ -98,14 +97,14 @@ movies_project_ %>%
 ```
 
 ```
-##Mapping:
+## Mapping:
 ```{r}
 ggplot(movies)+
   geom_point(mapping = aes(x=revenue, y=genre))
 
 
 ```
-##Calculations
+## Calculations
 
 ```{r}
 
@@ -127,6 +126,9 @@ movies %>%
     summarise(avg.rev=mean(revenue))
 
 ```
+
+
+
 
 
 
