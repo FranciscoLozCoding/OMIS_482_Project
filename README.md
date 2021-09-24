@@ -57,7 +57,7 @@ view(movies)
 movies <- movies %>% separate(release_date, into = c("month", "day", "year"), sep = "/", convert= "TRUE")
 
 movies %>% 
-  filter(release_date >= "1980-01-01" & release_date <= "2017-12-31") 
+  filter(year>= 1980 & year <= 2017) 
 
 movies %>% 
   filter(status=="Released")
