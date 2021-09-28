@@ -51,7 +51,8 @@ geom_point(mapping = aes(y = original_language, x=revenue))
 ```
 
 ## Graph 2: Does Country of production have an effect on revenue?- Amelasky Mendez
-We wanted to see if the country production of a movie influences the revenue it generates. We started by grouping the data by country_production. We then ran descriptive statistics on the data that would measure the Min, Max , mean, median, and standard deviation. With these results we created a scatter plot that helped us visualize the mean amount of revenue the movies generated in each country of production. 
+We wanted to see if the country production of a movie influences the revenue it generates. We started by grouping the data by country_production. We then ran descriptive statistics on the data that would measure the Min, Max , mean, median, and standard deviation. With these results we created a scatter plot that helped us visualize the mean amount of revenue the movies generated in each country of production. We believed that the US was going to be one of the country of productions to have high average revenue. However, it is not even in the top 5, DM had the highest average revenue followed by MT, CZ, AE, and MA. Judging by the scatter plot point size they differ from that of the US. By running another plot, we can see that the US has produced more movies than all the top 5 countries combined which created an unbalanced data in the previous plot. This shows that the place of production does have an influence on the amount of revenue a movie generates.
+
 
 ```{r}
 movies%>%
@@ -60,6 +61,9 @@ movies%>%
   
   ggplot()+
   geom_point(mapping=aes(y=country_production, x=rev_mean, size=count))
+  movies%>%
+  ggplot()+
+  geom_point(mapping = aes(y=country_production, x=revenue))
 
 ``
 
