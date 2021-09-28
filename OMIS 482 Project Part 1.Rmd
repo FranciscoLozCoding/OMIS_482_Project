@@ -30,7 +30,7 @@ Before we can manipulate the dataset and start to analyze the data, we need to t
 
 movies <-select(Movies_Data,2,3,7:8,10:14,16:18,20:22) %>%
   filter(!is.na(revenue),!is.na(release_date)) %>%
- separate(director,into = c("director_first_name","director_last_name"), sep = " ") %>%
+ separate(director,into = c("director_first_name","director_last_name"), sep = " ",convert = "TRUE") %>%
  separate(release_date, into = c("month", "day", "year"), sep = "/") %>%  filter(year>= 1980 & year <= 2017,status=="Released",original_title != "Avatar",original_title != "Titanic")
 
 
@@ -100,7 +100,13 @@ movies %>%group_by(vote_average) %>% filter(revenue > 0) %>%
 ggplot() + 
 geom_smooth(mapping = aes(y = revenue, x=vote_average))
 ```
-
+## Graph 4: Does the month a movie is released effect the Revenue? Tyler Williams
+To see if the month of release effects the revenue, we created a scatter plot with revenue on the y-axis and release month on the x-axis. The results show that some months are better to release a movie than others. Late sping to early summer produces movies with higher revenues often. The holiday months of Novemeber and Decemeber also see higher revenues. The winter and early fall generally are bad times to release a movie, as revenues are frequently lower than movies released in more optimal months
+```{r}
+movies %>% 
+  ggplot() +
+  geom_point(mapping = aes(x=month,y=revenue))
+```
 ```{r}
 
 ```
