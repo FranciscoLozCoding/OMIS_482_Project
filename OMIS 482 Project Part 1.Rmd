@@ -84,6 +84,23 @@ geom_point(mapping = aes(x = popularity, y=rev_mean))
 ```
 
 
+## Graph 4: Does the movie rating have an effect on Revenue? - Gary Dhami
+We wanted to see if the movie rating of a movie effects the revenue. So we grouped the data set by the column vote_average. After the data set was grouped we ran descriptive statistics such as mean, median, max, and min. We can see in the tibble that the movie with the higher vote_avergae did have the higher revenue.We plotted the revenue on a scatter plot and the graph displays a relationship between movie ratign and revenue. Our assumption was that the higher the movie rating, the higher the revenue for the movie which does hold true. we also plotted a line graph that does a great job displaying how the revenue goes up for data points with higher movie ratings. The two graphs agree with each other, leading us to believe that movie ratings has an effect on movie revenue. 
+
+```{r}
+movies %>%
+group_by(vote_average) %>% filter(revenue > 0) %>% 
+summarise(count=n(),rev_mean = mean(revenue,na.rm = TRUE),rev_med=median(revenue),rev_max=max(revenue), rev_min=min(revenue)) %>% arrange(desc(rev_mean))
+
+movies %>%
+group_by(vote_average) %>% filter(revenue > 0) %>% 
+summarise(count=n(),rev_mean = mean(revenue,na.rm = TRUE),rev_med=median(revenue),rev_max=max(revenue), rev_min=min(revenue)) %>% arrange(desc(rev_mean)) %>% ggplot(data=movies, mapping=aes(x=vote_average, y=revenue))+geom_point()+geom_smooth()
+
+movies %>%group_by(vote_average) %>% filter(revenue > 0) %>% 
+ggplot() + 
+geom_smooth(mapping = aes(y = revenue, x=vote_average))
+```
+
 ```{r}
 
 ```
