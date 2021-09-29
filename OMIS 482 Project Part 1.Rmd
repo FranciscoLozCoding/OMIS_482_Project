@@ -29,15 +29,18 @@ Before we can manipulate the dataset and start to analyze the data, we need to t
 ## Filtering:
 Although they are columns that can be used to group by. Next, since our data set is not in the tidyverse package, we had to assign our data frame to the name "movies." Because our dataset goes all the way back to 1930 and even predicts films to 2029, we found that using our data set from 1980 to 2017 would give us a more accurate look at how film has evolved. We also found that in order to measure a movies success it has to be released, so we filtered out the movies that were never released. Finally, we removed all the outliers in the data set. Most of the outliers were because the movies were really popular and broke records. For example, Avatar was a popular movie that revolutionized the movie industry since it used a bunch of new technology such as new motion capture animation technologies. 
 
-
 ```{r}
 ##Summary Statistics - Rachel Worden
-Descriptive statistics are a vital part in interpreting a dataset. It allows the reader and user(s) of the code to get an understanding of the data. In this case, we are taking a very large number of observations and turning it into something simple. The descriptive statstics below can help movie production companies estimate if they are below, the same, or above industry standard when it comes to revenue. For example the entertainment conglomorate, Disney could look at the average in order to estimate how much money their next film should be able to bring in. 
+Descriptive statistics are a vital part in interpreting a dataset. It allows the reader and user(s) of the code to get an understanding of the data. In this case, we are taking a very large number of observations and turning it into something simple. The descriptive statstics below can help movie production companies estimate if they are below, the same, or above industry standard when it comes to revenue. For example the entertainment conglomorate, Disney could look at the average in order to estimate how much money their next film should be able to bring in. Once we have the code in order to compute these statistics, we can then group by other columns we want to analyze. THis will allow us to see if there are correlations between revenue and other variables. 
 
 movies %>% 
   filter(!is.na(revenue)) %>% 
   summarise(count=n(),avg_rev=mean(revenue),median_rv=median(revenue),max_rev=max(revenue),min_rev=min(revenue),sd_rev=sd(revenue))
 
+movies %>%  
+  group_by(genres) %>% 
+  filter(!is.na(revenue)) %>% 
+  summarise(count=n(),avg_rev=mean(revenue),median_rv=median(revenue),max_rev=max(revenue),min_rev=min(revenue),sd_rev=sd(revenue, na.rm = T))
 
 
 
@@ -126,7 +129,9 @@ movies %>%
   ggplot() +
   geom_point(mapping = aes(x=month,y=revenue))
 ```
-## Analysis 6: Does the budget of a movie effect Revenue? - Rachel Worden
+## Analysis 6: Does the budget have an effect on revenue? - Rachel Worden
+When analyzing a movies successs, revenue and budget seem to be synonomous. However, just because a movie production company might have a large bugdget, doesn't necessairly mean they will make tons of revenue. Some movies have done very well without having to invest huge sums of money. To test if there is a correlation between revenue and budget we can 
+
 
 
 
@@ -156,7 +161,6 @@ Is there a correlation between movie ratings and revenue?
 
 
 ```
-
 
 ```
 
