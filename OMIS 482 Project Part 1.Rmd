@@ -30,10 +30,10 @@ Before we can manipulate the dataset and start to analyze the data, we need to t
 ##Summary Statistics
 
 ```{r}
-
 movies %>% 
   filter(!is.na(revenue)) %>% 
   summarise(count=n(),avg_rev=mean(revenue),median_rv=median(revenue),max_rev=max(revenue),min_rev=min(revenue),sd_rev=sd(revenue))
+
 
 
 
@@ -122,11 +122,13 @@ movies %>%
   ggplot() +
   geom_point(mapping = aes(x=month,y=revenue))
 ```
+## Analysis 6: Does the budget of a movie effect Revenue? 
+
+
+
 ```{r}
 
-## Analysis 6: 
 
-```
 ## Ideas:
 In the column "status" filter by released only 
 Status column look for correlation between released and months -stick with one variable ( revenue)
