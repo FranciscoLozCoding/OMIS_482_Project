@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Introduction
 Hi, we are a group of movie reviewers! We pick a movie every month, watch it, and get together to discuss it. We love the movies so much that we wanted to ask what makes a certain movie successful? 
 
-Using the movies dataset below, our group plans to analyze what factors affect the success of a movie. We believe a movie is successful by how much revenue a movie makes. But that is not all. By analyzing what determines success we can get a better idea of what other variables make a movie a hit. Determining this would allow movie producers to know what they can do to maximize success for their movies. We also plan to look at general trends in the movie industry to see what other patterns exist in the data. The analysis is done using data from an excel file and will be manipulated and visualized using tidyverse.
+Using the movies dataset below, our group plans to analyze what factors affect the success of a movie. We believe a movie is successful by how much revenue a movie makes. By analyzing revenue, we can determine success and get a better idea of what other variables make a movie a hit. Determining this would allow movie producers and companies to know what they can do to maximize success for their next film. The analysis is done using data from an excel file and will be manipulated and visualized using tidyverse in Rstudio. 
 
 ## Importing the data:
 ```{r, echo=F}
@@ -122,7 +122,8 @@ movies %>%
   ggplot() +
   geom_point(mapping = aes(x=month,y=revenue))
 ```
-## Analysis 6: Does the budget of a movie effect Revenue? 
+## Analysis 6: Does the budget of a movie effect Revenue? - Rachel Worden
+
 
 
 
