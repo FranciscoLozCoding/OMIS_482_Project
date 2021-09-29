@@ -2,7 +2,7 @@
 title: "OMIS 482 Project Part 1"
 author: Francisco Lozano, Amelasky Mendez, Rachel Worden, Tyler Williams and Gary
   Dhami
-date: "9/26/2021"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 output: word_document
 editor_options: 
   chunk_output_type: console
