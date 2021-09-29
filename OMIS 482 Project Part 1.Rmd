@@ -18,7 +18,7 @@ Hi, we are a group of movie reviewers! We pick a movie every month, watch it, an
 Using the movies dataset below, our group plans to analyze what factors affect the success of a movie. We believe a movie is successful by how much revenue a movie makes. But that is not all. By analyzing what determines success we can get a better idea of what other variables make a movie a hit. Determining this would allow movie producers to know what they can do to maximize success for their movies. We also plan to look at general trends in the movie industry to see what other patterns exist in the data. The analysis is done using data from an excel file and will be manipulated and visualized using tidyverse.
 
 ## Importing the data:
-```{r, echo=T}
+```{r, echo=F}
 library(tidyverse)
 Movies_Data <- read_csv("movies_project.csv")
 print(Movies_Data)
