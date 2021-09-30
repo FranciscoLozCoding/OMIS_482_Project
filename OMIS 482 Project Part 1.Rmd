@@ -31,10 +31,11 @@ Although they are columns that can be used to group by. Next, since our data set
 
 
 ##Summary Statistics - Rachel Worden
-Descriptive statistics are a vital part in interpreting a dataset. It allows the reader and user(s) of the code to get an understanding of the data. In this case, we are taking a very large number of observations and turning it into something simple. The descriptive statstics below can help movie production companies estimate if they are below, the same, or above industry standard when it comes to revenue. For example the entertainment conglomorate, Disney could look at the average in order to estimate how much money their next film should be able to bring in. Once we have the code in order to compute these statistics, we can then group by other columns we want to analyze. THis will allow us to see if there are correlations between revenue and other variables. 
+Descriptive statistics are a vital part in interpreting a dataset. It allows the reader and user(s) of the code to get an understanding of the data. In this case, we are taking a very large number of observations and turning it into something simple. The descriptive statstics below can help movie production companies estimate if they are below, the same, or above industry standard when it comes to revenue. For example the entertainment conglomorate, Disney could look at the average in order to estimate how much money their next film should be able to bring in. Once we have the code in order to compute these statistics, we can then group by other columns we want to analyze. THis will allow us to see if there are correlations between revenue and other variables. Out of 3,376 observations in our data set, the average revenue a movie makes is 117,031,353. With a wide standard deviaiton of 183483090. 
 
 movies %>% 
   filter(!is.na(revenue)) %>% 
+  filter(revenue > 0) %>%
   summarise(count=n(),avg_rev=mean(revenue),median_rv=median(revenue),max_rev=max(revenue),min_rev=min(revenue),sd_rev=sd(revenue))
 
 movies %>%  
@@ -130,8 +131,18 @@ movies %>%
   geom_point(mapping = aes(x=month,y=revenue))
 ```
 ## Analysis 6: Does the budget have an effect on revenue? - Rachel Worden
-When analyzing a movies successs, revenue and budget seem to be synonomous. However, just because a movie production company might have a large bugdget, doesn't necessairly mean they will make tons of revenue. Some movies have done very well without having to invest huge sums of money. To test if there is a correlation between revenue and budget we can 
+When analyzing a movies successs, revenue and budget seem to be synonomous. However, just because a movie production company might have a large bugdget, doesn't necessairly mean they will make tons of revenue. Some movies have done very well without having to invest huge sums of money. To test if there is a correlation between revenue and budget we can create descriptive statstics, by grouping by budget and measuring revenue. {FILL IN} Then.....plot them on a scatter plot to see if there is a relationship between the two. 
 
+
+movies %>%  
+  group_by(budget) %>% 
+  filter(!is.na(revenue)) %>% 
+  filter(revenue > 0) %>%
+  filter(budget >0)  %>%
+  summarise(count=n(),avg_rev=mean(revenue),median_rv=median(revenue),max_rev=max(revenue),min_rev=min(revenue),sd_rev=sd(revenue)) 
+  
+ ggplot(movies)+
+  geom_point(mapping = aes(x=revenue, y=budget, linetype=_____)
 
 
 
