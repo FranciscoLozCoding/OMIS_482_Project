@@ -141,7 +141,12 @@ movies %>%
   filter(budget >0)  %>%
   summarise(count=n(),avg_rev=mean(revenue),median_rv=median(revenue),max_rev=max(revenue),min_rev=min(revenue),sd_rev=sd(revenue)) 
   
- ggplot(movies)+
+  movies %>% 
+  filter(!is.na(budget)) %>% 
+  summarise(count=n(),avg_budget=mean(budget),median_budget=median(budget),max_budget=max(budget),min_buget=min(budget),sd_rev=sd(budget))
+  
+
+ggplot(movies)+
   geom_point(mapping = aes(x=revenue, y=budget, linetype=_____)
 
 
