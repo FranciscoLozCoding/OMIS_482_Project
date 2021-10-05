@@ -188,7 +188,7 @@ movies %>%
   geom_point(mapping = aes(x=month,y=revenue))
 ```
 ## Analysis 6: Does the budget have an effect on revenue? - Rachel Worden
-When analyzing a movies successs, revenue and budget seem to be synonomous. However, just because a movie production company might have a large bugdget, doesn't necessairly mean they will make tons of revenue. Some movies have done very well without having to invest huge sums of money. To test if there is a correlation between revenue and budget we can create descriptive statstics, by grouping by budget and measuring revenue. {FILL IN} Then.....plot them on a scatter plot to see if there is a relationship between the two. 
+When analyzing a movies successs, revenue and budget seem to be synonomous. However, just because a movie production company might have a large bugdget, doesn't necessairly mean they will make tons of revenue. Some movies have done very well without having to invest huge sums of money. To test if there is a correlation between revenue and budget we can create descriptive statstics, by grouping by budget and measuring revenue. By plotting revenue and buget on a scatter plot, we can see if there is a relationship between the two. After tidying the data set and cutting down the number of genre observations, we can then have the linetype be based on genre. As you can see from the scatterplot, there is a correlation between revenue and buget. As budget increases, so will revenue. 
 
 
 movies %>%  
