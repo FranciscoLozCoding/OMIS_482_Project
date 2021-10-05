@@ -163,8 +163,9 @@ movies %>%
   summarise(count=n(),avg_budget=mean(budget),median_budget=median(budget),max_budget=max(budget),min_buget=min(budget),sd_rev=sd(budget))
   
 
-ggplot(movies)+
-  geom_point(mapping = aes(x=revenue, y=budget, linetype=_____)
+ggplot(movies_tidy_genre, mapping = aes(x=revenue, y=budget))+
+  geom_point()+
+  geom_smooth(data = filter(movies_tidy_genre))
 
 
 
