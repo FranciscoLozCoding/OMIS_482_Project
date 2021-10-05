@@ -27,6 +27,11 @@ print(Movies_Data)
 Before we can manipulate the dataset and start to analyze the data, we need to tidy it up! We noticed that the columns "keywords", "index", "overview", "homepage", "ID", "Tagline","run_time" and "Cast" were not relevant, so we decided to omit these columns because they add no value to our goal of trying to figure out what impacts a movie's success. Also, the director's first and last name are separated using the separate function in order to clean the data up more. As of right now our knowledge in Rstudio doesn't allow us to perform analytics on text columns and these categories are mostly character/text columns. In order to find the answers to our questions we plan to use mostly integer values. We want to make sure we abide by "rule of 3" ensuring each variable has its own column, row, cell. In separating release_date we left the resulting columns to data type chr because month, day, and year aren't columns that can be summarized with mean,max,sum, and so forth. 
 
 
+movies <-select(Movies_Data,2,3,7:8,10:14,16:18,20:22) %>%
+  filter(!is.na(revenue),!is.na(release_date)) %>%
+ separate(director,into = c("director_first_name","director_last_name"), sep = " ",convert = "TRUE") %>%
+ separate(release_date, into = c("month", "day", "year"), sep = "/") %>%  filter(year>= 1980 & year <= 2017,status=="Released",original_title != "Avatar",original_title != "Titanic")
+
 
 ## Description of the movies dataset
 The movies data set includes the important variables us movie reviewers need in order to find out the ways revenue is affected. Other columns such as vote_average, which are movie reviews, popularity, country of production, original language, budget, and month of release are the key variables that we will be looking to test. The data set is also filtered to remove any non-released movies as revenue cannot be tested for those movies. Additionally, movies with revenues less than $0 dollars were also removed from the data as they also do not have sufficient revenue information to be tested. The movies data set should do a good job helping us figure out which variables contribute the most towards making a movie successful.
@@ -102,11 +107,6 @@ movies %>%
 
 
 
-
-movies <-select(Movies_Data,2,3,7:8,10:14,16:18,20:22) %>%
-  filter(!is.na(revenue),!is.na(release_date)) %>%
- separate(director,into = c("director_first_name","director_last_name"), sep = " ",convert = "TRUE") %>%
- separate(release_date, into = c("month", "day", "year"), sep = "/") %>%  filter(year>= 1980 & year <= 2017,status=="Released",original_title != "Avatar",original_title != "Titanic")
 
 
 ```
@@ -188,18 +188,12 @@ movies %>%
   geom_point(mapping = aes(x=month,y=revenue))
 ```
 ## Analysis 6: Does the budget have an effect on revenue? - Rachel Worden
-When analyzing a movies successs, revenue and budget seem to be synonomous. However, just because a movie production company might have a large bugdget, doesn't necessairly mean they will make tons of revenue. Some movies have done very well without having to invest huge sums of money. To test if there is a correlation between revenue and budget we can create descriptive statstics, by grouping by budget and measuring revenue. By plotting revenue and buget on a scatter plot, we can see if there is a relationship between the two. After tidying the data set and cutting down the number of genre observations, we can then have the linetype be based on genre. As you can see from the scatterplot, there is a correlation between revenue and buget. As budget increases, so will revenue. 
+When analyzing a movies successs, revenue and budget seem to be synonomous. However, just because a movie production company might have a large bugdget, doesn't necessairly mean they will make tons of revenue. Some movies have done very well without having to invest huge sums of money. To test if there is a correlation between revenue and budget we can create descriptive statstics, grouping by budget and measuring revenue. Then we can comepare them to the main summary statistics of revenue. We filterd by bugdget larger than 100 for two reasons. One, a movie with less than 100 is typically not going to be very well-known. Two, it gets the observation count closer to the amount of revenue observatons after tidying. By plotting revenue and buget on a scatter plot, we can see if there is a relationship between the two. After tidying the data set and cutting down the number of genre observations, we can then have the linetype be based on genre. As you can see from the scatterplot, there is a correlation between revenue and buget.t As budget increases, so will revenue. 
 
-
-movies %>%  
-  group_by(budget) %>% 
-  filter(!is.na(revenue)) %>% 
-  filter(revenue > 0) %>%
-  filter(budget >0)  %>%
-  summarise(count=n(),avg_rev=mean(revenue),median_rv=median(revenue),max_rev=max(revenue),min_rev=min(revenue),sd_rev=sd(revenue)) 
   
   movies %>% 
   filter(!is.na(budget)) %>% 
+  filter(budget>100) %>% 
   summarise(count=n(),avg_budget=mean(budget),median_budget=median(budget),max_budget=max(budget),min_buget=min(budget),sd_rev=sd(budget))
   
 
@@ -210,38 +204,7 @@ ggplot(movies_tidy_genre, mapping = aes(x=revenue, y=budget))+
 
 
 
-```{r}
-
-
-## Ideas:
-In the column "status" filter by released only 
-Status column look for correlation between released and months -stick with one variable ( revenue)
-Min, max, mean, standard deviation, of revenue 
-language and country 
-popularity(?)
-
-how does it fit in the overall idea(research question)
-
-```
-```
-## Questions we have:
-
-Is there a correlation between budget and the amount of revenue a movie makes? 
-Is there a correlation between 
-What is the most popular genre? 
-Is there a correlation between popularity and release date
-Is there a correlation between how successful a movie is and their production company? 
-Is there a correlation between movie ratings and revenue?
-
-
-```
-
-```
-
-```
 
 
 
-```
 
-```
